@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { options } from "../Navbar";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
+import * as motion from 'framer-motion/client';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -21,6 +22,7 @@ const Sidebar = () => {
   }, [isOpen]);
   return (
     <div
+    
       className="col-span-1 flex justify-end items-center cursor-pointer h-full relative"
       onClick={() => setIsOpen(!isOpen)}
     >
@@ -35,7 +37,11 @@ const Sidebar = () => {
           <div
             className={`bg-white px-5 ${poppins.className}`}
           >
-            <div className="flex flex-col gap-5 border-t border-slate-400/15 py-5 font-medium px-5">
+            <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col gap-5 border-t border-slate-400/15 py-5 font-medium px-5">
               {options.map((option) => (
                 <Link
                   href={option.path}
@@ -51,7 +57,7 @@ const Sidebar = () => {
                   Sing Up
                 </Link>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       )}

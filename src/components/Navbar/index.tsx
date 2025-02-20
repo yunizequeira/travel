@@ -1,23 +1,26 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import Sidebar from "../Sidebar";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 export const options = [
   {
     label: "Services",
-    path: "#services",
+    path: "/#services",
   },
   {
     label: "Destinations",
-    path: "#destinations",
+    path: "/#destinations",
   },
   {
     label: "Booking",
-    path: "#booking",
+    path: "/#booking",
   },
   {
     label: "Testimonials",
-    path: "#testimonials",
+    path: "/#testimonials",
   },
   {
     label: "Login",
@@ -25,8 +28,21 @@ export const options = [
   },
 ];
 const Navbar = () => {
+  const path = usePathname();
+
+  useEffect(() => {
+    if (path === "/login" || path === "/register") {
+      document.getElementById("navbar")?.classList.add("bg-white");
+    }else{
+      document.getElementById("navbar")?.classList.remove("bg-white");
+    }
+  }, [path]);
+
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 px-10 backdrop-blur-md" id="navbar">
+    <div
+      className="fixed top-0 left-0 right-0 z-50 px-10 backdrop-blur-md"
+      id="navbar"
+    >
       <div className="py-8 grid grid-cols-2 lg:grid-cols-4 container mx-auto ">
         <Link href={"/"}>
           <figure>
@@ -54,7 +70,7 @@ const Navbar = () => {
             <Link href="/register">Sing Up</Link>
           </div>
         </div>
-        <div>
+        <div className="lg:hidden">
           <Sidebar />
         </div>
       </div>
