@@ -93,27 +93,27 @@ const Testimonials = () => {
           ></div>
         </div>
       </div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center flex-col md:flex-row items-center">
         <div className="lg:min-h-64 min-h-80 w-full max-w-xl bg-white relative shadow-lg rounded-lg">
           <TestimonialsCard testimonioObject={TestimoialsArray[testimonial]} />
         </div>
-        <div className="px-2">
-          <div className="p-1 bg-slate-100 cursor-pointer" onClick={moveRight}>
+        <div className="px-2 flex py-5 flex-row-reverse md:block">
+          <div className="md:p-1 px-5 py-5 bg-slate-100 cursor-pointer rounded-r-lg md:rounded-none" onClick={moveRight}>
             <Image
               src="/img/icons/up.svg"
               alt="hero"
               width={10}
               height={10}
-              className="w-5 h-5 object-contain"
+              className="w-5 h-5 object-contain rotate-90 md:rotate-0"
             />
           </div>
-          <div className="p-1 bg-slate-100 cursor-pointer" onClick={moveLeft}>
+          <div className="md:p-1 px-5 py-5 bg-slate-100 cursor-pointer rounded-l-lg md:rounded-none" onClick={moveLeft}>
             <Image
               src="/img/icons/down.svg"
               alt="hero"
               width={10}
               height={10}
-              className="w-5 h-5 object-contain"
+              className="w-5 h-5 object-contain rotate-90 md:rotate-0"
             />
           </div>
         </div>
